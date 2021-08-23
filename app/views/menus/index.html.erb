@@ -1,6 +1,12 @@
-<section>
-<h1 class="MenuPage-title">Welcome to my cafeteria</h1>
-<%=render partial: "menu-section", locals:{
-   menus: Menu.all
-}%>
-</section>
+ <article>
+   <h1 class="MenuPage-title">Menu Types</h1>
+     <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
+       <%=text_field_tag 'menu_item',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
+       <%=text_field_tag 'menu_id',nil,placeholder:'ID of the Menu?',class:"AddMenu-name"%>
+
+       <%=submit_tag 'Add',class:'AddMenu-button'%>
+     <%end%>
+   <%=render partial: "menu-section", locals:{
+     menus: Menu.all
+   }%>
+ </article>

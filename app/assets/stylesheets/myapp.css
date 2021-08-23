@@ -9,7 +9,7 @@ body {
     line-height: 1.5;
 }
 
-.MenuItem-text {
+.Menu-text {
     font-size: 24px;
     line-height: 1.4;
     padding-left: 10px;
@@ -26,6 +26,27 @@ body {
     text-align: center;
 }
 
+.Menu-link {
+    text-decoration: none;
+}
+
+.Menu-container {
+    display: flex;
+    text-decoration: none;
+}
+
 .MenuItem-container {
     display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.MenuItem-name {
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+.MenuItem-price {
+    padding-left: 20px;
+    font-size: 15px;
 }
