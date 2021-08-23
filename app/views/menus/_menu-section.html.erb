@@ -1,0 +1,13 @@
+<section>
+    <%menus.all.each do |menu|%>
+        <li class="MenuItem">
+            <%=form_with(url: "/menus/#{menu.id}", method:"get") do%>
+            <label class="MenuItem-container">
+                <p class="MenuItem-text"><%= menu.menu_item %></p>
+                <input type="image" text =">>" src="trashcan1.svg"/>
+
+            </label>
+            <%end%>
+        </li>
+    <%end%>
+</section>
