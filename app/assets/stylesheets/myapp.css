@@ -30,6 +30,10 @@ body {
     text-decoration: none;
 }
 
+.Menu-form {
+    display: flex;
+}
+
 .Menu-container {
     display: flex;
     text-decoration: none;

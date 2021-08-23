@@ -1,7 +1,4 @@
 class Menu < ActiveRecord::Base
-    has_many :menu_items
+    has_many :menu_items, :dependent => :destroy
 
-    def to_pleasant_string
-        "#{menu_id}. #{menu_item}"
-    end
   end
