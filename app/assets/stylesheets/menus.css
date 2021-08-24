@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+    line-height: 1;
+    max-width: 400px;
+    margin: 20px 600px;
+}
+
+.MenuPage-title {
+    font-size: 48px;
+    line-height: 1.5;
+}
+
+.Menu-text {
+    font-size: 24px;
+    line-height: 1.4;
+    padding-left: 20px;
+    color: black;
+}
+
+.Menu-container {
+    display: flex;
+}
+
+.Menu-link {
+    text-decoration: none;
+}
+
+.Menu-form {
+    display: flex;
+}
+
+.MenuItem-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.MenuItem-name {
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+.MenuItem-price {
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.MenuItem {
+    padding-top: 20px;
+}

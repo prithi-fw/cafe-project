@@ -15,17 +15,6 @@ body {
     padding-left: 10px;
 }
 
-.MenuItem {
-    font-size: 10px;
-    line-height: 1.1;
-    padding-left: 100px;
-    width: 200px;
-    border: 10px solid lightskyblue;
-    padding: 50px;
-    margin-left: 400px;
-    text-align: center;
-}
-
 .Menu-link {
     text-decoration: none;
 }
@@ -37,20 +26,4 @@ body {
 .Menu-container {
     display: flex;
     text-decoration: none;
-}
-
-.MenuItem-container {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-}
-
-.MenuItem-name {
-    font-size: 30px;
-    padding-left: 20px;
-}
-
-.MenuItem-price {
-    padding-left: 20px;
-    font-size: 15px;
 }

@@ -1,0 +1,27 @@
+.MenuItem-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.MenuItem-name {
+    font-size: 30px;
+    padding-left: 20px;
+}
+
+.MenuItem-price {
+    padding-left: 20px;
+    font-size: 15px;
+}
+
+.MenuItem {
+    font-size: 10px;
+    line-height: 1.1;
+    padding-left: 100px;
+    width: 150px;
+    border: 50px dotted solid lightskyblue;
+    padding: 50px;
+    margin-left: 100px;
+    margin-right: 200px;
+    text-align: center;
+}
