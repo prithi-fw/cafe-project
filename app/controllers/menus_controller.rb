@@ -9,7 +9,7 @@ class MenusController < ApplicationController
       def create
         id = params[:menu_id]
         item_name = params[:menu_item]
-        Menu.create!(menu_id: id, menu_item: item_name)
+        Menu.create!(id: id, menu_name: item_name)
         
         redirect_to menus_path
       end
