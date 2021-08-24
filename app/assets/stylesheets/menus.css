@@ -28,23 +28,3 @@ body {
 .Menu-form {
     display: flex;
 }
-
-.MenuItem-container {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-}
-
-.MenuItem-name {
-    font-size: 30px;
-    padding-left: 20px;
-}
-
-.MenuItem-price {
-    padding-left: 20px;
-    font-size: 15px;
-}
-
-.MenuItem {
-    padding-top: 20px;
-}

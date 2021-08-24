@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get "/" => "home#index"
   resources :menu_items
   resources :menus
+  resources :users
+  post "/signin" => "sessions#create", as: :sessions
+  get "/signin" => "sessions#new", as: :new_sessions
 end
