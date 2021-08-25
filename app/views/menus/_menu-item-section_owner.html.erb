@@ -7,7 +7,7 @@
           <label for="<%= "item-#{item.id}" %>"><%= item.menu_item_name %> </label>
           <p class="MenuItem-price"> <%=item.menu_item_price%> </p>
           <%= link_to menu_item_path(item.id) ,method: "delete" do %>
-              <%= image_tag ('trashcan1.svg') %>
+              <%= image_tag ('right-arrow.png') %>
           <% end %>
          </div>
        </li>

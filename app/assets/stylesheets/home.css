@@ -25,9 +25,11 @@ body {
 
 .NavBar-items {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     justify-content: flex-end;
-    padding: 30px;
+    padding: 24px;
+    align-items: center;
     font-size: larger;
 }
 
@@ -38,7 +40,6 @@ body {
 }
 
 .NavBar-content {
-    padding-left: 20px;
     padding-right: 10px;
     text-decoration: none;
     color: black;
@@ -46,6 +47,18 @@ body {
 
 .NavBar .fa {
     color: black;
-    padding-left: 20px;
-    padding-right: 10px;
+    padding-right: 8px;
+}
+
+.NavBar-item-wrapper {
+    margin-right: 20px;
+}
+
+.NavBar-items> :nth-child(1) {
+    margin-right: auto;
+}
+
+.Body-content {
+    width: 500px;
+    margin: 50px auto;
 }
