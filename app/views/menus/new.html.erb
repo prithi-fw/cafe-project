@@ -14,8 +14,7 @@
        <%Menu.all.each do |menu|%>
          <li>
            <tr>
-             <%=form_with(url: menu_path(menu.id), method:"delete",class:"Menu-form"  ) do%>
-               <td style="display:flex;">
+              <td style="display:flex;">
                <%=link_to menu_path(menu.id),class: "Menu-link" do%>
                  <label class="Menu-container">
 
@@ -24,13 +23,16 @@
                  </label>
                <%end%>
                </td>
-               <td><%=image_submit_tag 'trashcan1.svg'%></td>
-             <%end%>
+             <td>
+               <%=link_to menu_path(menu.id), method:"delete",class:"Menu-form"   do%>
+                 <%=image_submit_tag 'trashcan1.svg'%>
+               <%end%>
+            </td>
            </tr>
          </li>
 
        <%end%>
      </table>
-     </div>
-     </article>
+    </div>
+ </article>
  

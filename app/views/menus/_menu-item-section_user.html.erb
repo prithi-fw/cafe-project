@@ -1,28 +1,20 @@
 <article>
    <section class="MenuItem">
-     <table>
-       <tr class="Table-header">
-         <th></th>
-         <th>Item</th>
-         <th>Price</th>
-       </tr>
+     
        <%= form_with url: orders_path, method: "post" do |form| %>
          <% menu.each do |item| %>
            <li>
              <div class="MenuItem-container">
-               <tr>
-                 <td><%= form.check_box :item_ids, {multiple: true, id: "item-#{item.id}"}, item.id, nil %></td>
-                 <td><p><%= item.menu_item_name %></p></td>
-                 <td><p class="MenuItem-price"> &#x20b9; <%=item.menu_item_price%> </p></td>
-               </tr>
+              <%= form.check_box :item_ids, {multiple: true, id: "item-#{item.id}"}, item.id, nil %>
+              <p><%= item.menu_item_name %></p>
+              <p class="MenuItem-price"> &#x20b9; <%=item.menu_item_price%> </p>
+          
              </div>
            </li>
          <% end %>
-         <tr>
-           <td></td>
-           <td> <%= form.submit "Add to Cart", class:"Table-button" %> </td>
-           <td> <%= form.submit "Place Order", class:"Table-button" %> </td>
-         </tr>
+         <%= form.submit "Add to Cart", name:"commit", class:"Table-button" %>
+        <%= form.submit  "Place Order", name:"commit", class:"Table-button" %>
+       
        <% end %>
      </table>
    </section>

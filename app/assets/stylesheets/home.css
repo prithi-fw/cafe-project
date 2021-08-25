@@ -62,3 +62,9 @@ body {
     width: 500px;
     margin: 50px auto;
 }
+
+.Flash-error {
+    color: darkred;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
