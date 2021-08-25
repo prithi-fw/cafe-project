@@ -24,8 +24,11 @@
           <p style="font-size: xxx-large;color:dimgrey;"><i class="fa fa-utensils"></i>Cafeteria</p>
         <li>
         <% if @current_user.role == 'owner' %>
-          <%= link_to "Pending-orders", orders_path, method: "get", class:'NavBar-content' %>
-        <% end %>
+        <li class="NavBar-item-wrapper">
+        <i class="fa fa-truck"></i>
+        <%= link_to "Pending-orders", orders_path, method: "get", class:'NavBar-content' %>
+        </li>
+      <% end %>
         <li class="NavBar-item-wrapper">
           <i class="fa fa-shopping-cart"></i>
           <%= link_to "My Cart", show_cart_path, method: "get", class:"NavBar-content" %>

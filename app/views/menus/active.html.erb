@@ -1,13 +1,20 @@
-<h2>Activate Today's Menus</h2>
  <div>
-   <%Menu.all.each do |menu|%>
-     <li>
-       <%= form_with( url:menu_path(menu.id), method: "put" ) do %>
-         <label class="Menu-container">
-           <%= check_box_tag 'active', '1', checked = menu.active, class: 'Menu-checkbox', onclick: 'this.form.submit()' %>
-           <p class="Menu-text"><%= menu.menu_name %></p>
-         </label>
-       <% end %>
-     </li>
-   <%end%>
+ <table>
+     <tr class="Table-header">
+       <th>Active</th>
+       <th>Menu</th>
+     </tr>
+     <%Menu.all.each do |menu|%>
+       <li>
+         <tr>
+         <%= form_with( url:menu_path(menu.id), method: "put" ) do %>
+           <label class="Menu-container">
+             <td><%= check_box_tag 'active', '1', checked = menu.active, class: 'Menu-checkbox', onclick: 'this.form.submit()' %></td>
+             <td><p class="Menu-text"><%= menu.menu_name %></p></td>
+           </label>
+         <% end %>
+         </tr>
+       </li>
+     <%end%>
+   </table>
  </div>

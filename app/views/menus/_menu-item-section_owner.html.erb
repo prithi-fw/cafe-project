@@ -1,18 +1,32 @@
-<section class="MenuItem">
-  <%= form_with url: orders_path, method: "post" do |form| %>
-    <% menu.each do |item| %>
-      <li>
-        <div class="MenuItem-container">
-          <%= form.check_box :item_ids, {multiple: true, id: "item-#{item.id}"}, item.id, nil %>
-          <label for="<%= "item-#{item.id}" %>"><%= item.menu_item_name %> </label>
-          <p class="MenuItem-price"> <%=item.menu_item_price%> </p>
-          <%= link_to menu_item_path(item.id) ,method: "delete" do %>
-              <%= image_tag ('right-arrow.png') %>
-          <% end %>
-         </div>
-       </li>
-     <% end %>
-     <%= form.submit "Add to Cart" %>
-     <%= form.submit "Place Order" %>
-   <% end %>
- </section>
+<article>
+   <section class="MenuItem">
+     <table>
+       <tr class="Table-header">
+        <th></th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Delete</th>
+      </tr>
+      <%= form_with url: orders_path, method: "post" do |form| %>
+        <% menu.each do |item| %>
+          <li>
+            <div class="MenuItem-container">
+              <tr>
+                <td><%= form.check_box :item_ids, {multiple: true, id: "item-#{item.id}"}, item.id, nil %></td>
+                <td><label for="<%= "item-#{item.id}" %>"><%= item.menu_item_name %> </label></td>
+                <td><p class="MenuItem-price"> &#x20b9; <%=item.menu_item_price%> </p></td>
+                <td><%= link_to menu_item_path(item.id) ,method: "delete" do %>
+                    <%= image_tag ('trashcan1.svg') %>
+                <% end %></td>
+              <tr>
+            </div>
+          </li>
+        <% end %>
+        <tr>
+          <td></td>
+          <td> <%= form.submit "Add to Cart", class:"Table-button" %> </td>
+          <td> <%= form.submit "Place Order", class:"Table-button" %> </td>
+        </tr>
+      <% end %>
+  </section>
+</article>

@@ -2,9 +2,9 @@
 <article>
   <%=form_with(url: menu_items_path,method: 'post', class: "AddMenuItem") do%>
     <%=hidden_field_tag 'menu_id',params[:id]%>
-      <%=text_field_tag 'menu_item_name',nil,placeholder:'Name of the Menu-Item',class:"AddMenuItem-text"%>
-      <%=text_field_tag 'menu_item_price',nil,placeholder:'Price of the Menu-Item',class:"AddMenuItem-price"%>
-
+    <%=text_field_tag 'menu_item_name',nil,placeholder:'Name of the Menu-Item',class:"AddMenuItem-name"%>
+    <%=text_field_tag 'menu_item_price',nil,placeholder:'Price',class:"AddMenuItem-price"%>
+    
       <%=submit_tag 'Add',class:'AddMenuItem-button'%>
    <%end%>
    </article>

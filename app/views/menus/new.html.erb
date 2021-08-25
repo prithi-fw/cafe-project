@@ -1,23 +1,36 @@
-<h1>Today's Menus</h1>
- <div>
-   <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
-     <%=text_field_tag 'menu_name',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
-     <%=submit_tag 'Add',class:'AddMenu-button'%>
-   <%end%>
- </div>
- <div>
-   <%Menu.all.each do |menu|%>
-     <li>
-       <%=form_with(url: menu_path(menu.id), method:"delete",class:"Menu-form"  ) do%>
-         <%=link_to menu_path(menu.id),class: "Menu-link" do%>
-           <label class="Menu-container">
-             <p class="Menu-text"><%= menu.menu_name %></p>
-             <%=image_tag 'trashcan1.svg' %>
-           </label>
-         <%end%>
-         <%=image_submit_tag 'trashcan1.svg'%>
+<article>
+   <div style="margin-bottom:20px;">
+     <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
+       <%=text_field_tag 'menu_name',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
+       <%=submit_tag 'Add',class:'AddMenu-button'%>
+     <%end%>
+   </div>
+   <div class="Menus">
+     <table>
+       <tr class="Table-header">
+         <th>Menu</th>
+         <th>Delete</th>
+       </tr>
+       <%Menu.all.each do |menu|%>
+         <li>
+           <tr>
+             <%=form_with(url: menu_path(menu.id), method:"delete",class:"Menu-form"  ) do%>
+               <td style="display:flex;">
+               <%=link_to menu_path(menu.id),class: "Menu-link" do%>
+                 <label class="Menu-container">
+
+                   <p class="Menu-text"><%= menu.menu_name %></p>
+                   <%=image_tag 'right-arrow.png' %>
+                 </label>
+               <%end%>
+               </td>
+               <td><%=image_submit_tag 'trashcan1.svg'%></td>
+             <%end%>
+           </tr>
+         </li>
+
        <%end%>
-     </li>
-   <%end%>
- </div>
+     </table>
+     </div>
+     </article>
  
