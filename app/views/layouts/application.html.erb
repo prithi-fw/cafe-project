@@ -8,18 +8,27 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link
+       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+       rel="stylesheet"
+       type="text/css"
+     />
+  
+    </head>
 
   <body>
-  
-    <% if @current_user %>
-    <p class="User-Header">
-      Welcome <%= @current_user.first_name %>!
-      <%= link_to "Pending-orders", orders_path, method: "get" %>
-      <%= link_to "My Cart", cart_orders_path, method: "get" %>
-      <%= link_to "Sign-out", destroy_session_path, method: "delete" %>
+  <% if @current_user %>
 
-    </p>
+  <div class="NavBar">
+    <ul class="NavBar-items">
+      <% if @current_user.role == 'owner' %>
+        <%= link_to "Pending-orders", orders_path, method: "get", class:'NavBar-content' %>
+      <% end %>
+      <%= link_to "My Cart", show_cart_path, method: "get", class:"NavBar-content" %>
+      <%= link_to "Sign-out", destroy_session_path, method: "delete", class:"NavBar-content" %>
+      <i class="fa fa-user"></i>
+    </ul>
+  </div>
   <% end %>
   <%= yield %>
   </body>

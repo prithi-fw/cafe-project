@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
     has_many :order_items
+    has_many :order_items, :dependent => :destroy
     belongs_to :user
     
     def self.create_order_and_order_items(user_id, item_ids, place_order, add_to_cart)
@@ -21,7 +22,19 @@ class Order < ActiveRecord::Base
     def self.pending
       where(order_delivered: false)
     end
-    def self.cart_items
-      where(add_to_cart: true)
+    def self.cart_items(orders)
+      orders.where(add_to_cart: true)
+    end
+ 
+    def self.cart_order(order_ids)
+      order_ids.each { |order_id|
+        place_order(Order.find(order_id))
+      }
+    end
+ 
+    def self.place_order(order)
+      order.add_to_cart = false
+      order.place_order = true
+    
     end
 end

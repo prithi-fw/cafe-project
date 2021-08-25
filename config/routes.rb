@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :admin
-  get "/cart" => "orders#show_cart", as: :cart_orders
-
+  
   resources :order_items
+  get "/" => "home#index"
+  get "/active" => "menus#active_menus", as: :active_menus
+  get "/cart" => "orders#show_cart", as: :show_cart
+  post "/cart-order" => "orders#cart_to_order", as: :cart_orders
+   
   post "/signin" => "sessions#create", as: :sessions
   get "/signin" => "sessions#new", as: :new_sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session

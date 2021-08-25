@@ -1,8 +1,6 @@
 body {
     font-family: sans-serif;
     line-height: 1;
-    max-width: 400px;
-    margin: 20px 600px;
 }
 
 .MenuPage-title {
@@ -27,4 +25,12 @@ body {
 
 .Menu-form {
     display: flex;
+}
+
+.Menu-checkbox {
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border: 1px solid #bfb8cc;
+    border-radius: 4px;
 }

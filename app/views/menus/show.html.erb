@@ -1,3 +1,4 @@
+<% if @current_user.role == 'owner' %>
 <article>
   <%=form_with(url: menu_items_path,method: 'post', class: "AddMenuItem") do%>
     <%=hidden_field_tag 'menu_id',params[:id]%>
@@ -6,7 +7,13 @@
 
       <%=submit_tag 'Add',class:'AddMenuItem-button'%>
    <%end%>
- <%=render partial: "menu-item-section", locals:{
-  menu: Menu.find(params[:id]).menu_items
+   </article>
+   <%=render partial: "menu-item-section_owner", locals:{
+     menu: Menu.find(params[:id]).menu_items
+
  }%>
- </article>
+ <% else %>
+   <%= render partial: "menu-item-section_user", locals:{
+     menu: Menu.find(params[:id]).menu_items
+   } %>
+ <% end %>

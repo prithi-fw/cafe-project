@@ -1,3 +1,9 @@
+body {
+    font-family: sans-serif;
+    line-height: 1;
+    background-color: #fbfafc;
+}
+
 .Home-title {
     font-size: 20px;
     margin-bottom: 30px;
@@ -15,4 +21,31 @@
     background-color: lightgray;
     display: flex;
     justify-content: space-between;
+}
+
+.NavBar-items {
+    display: flex;
+    justify-content: space-between;
+    justify-content: flex-end;
+    padding: 30px;
+    font-size: larger;
+}
+
+.NavBar {
+    background-color: lightskyblue;
+    border: 3px solid #fbfafc;
+    border-radius: 6px;
+}
+
+.NavBar-content {
+    padding-left: 20px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.NavBar .fa {
+    color: black;
+    padding-left: 20px;
+    padding-right: 10px;
 }
