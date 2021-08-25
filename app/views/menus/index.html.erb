@@ -1,11 +1,6 @@
  <article>
-   <h1 class="MenuPage-title">Menu Types</h1>
-     <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
-       <%=text_field_tag 'menu_item',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
-       <%=text_field_tag 'menu_id',nil,placeholder:'ID of the Menu?',class:"AddMenu-name"%>
-
-       <%=submit_tag 'Add',class:'AddMenu-button'%>
-     <%end%>
+   <h1 class="MenuPage-title">Choose from a wide range of dishes !</h1>
+   
    <%=render partial: "menu-section", locals:{
      menus: Menu.all
    }%>

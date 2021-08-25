@@ -16,6 +16,7 @@
     <p class="User-Header">
       Welcome <%= @current_user.first_name %>!
       <%= link_to "Pending-orders", orders_path, method: "get" %>
+      <%= link_to "My Cart", cart_orders_path, method: "get" %>
       <%= link_to "Sign-out", destroy_session_path, method: "delete" %>
 
     </p>

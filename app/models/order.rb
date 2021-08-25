@@ -2,9 +2,13 @@ class Order < ActiveRecord::Base
     has_many :order_items
     belongs_to :user
     
-    def self.create_order_and_order_items(user_id, item_ids)
-        new_order = Order.create!(
+    def self.create_order_and_order_items(user_id, item_ids, place_order, add_to_cart)
+      new_order = Order.create!(
           user_id: user_id,
+          delivered_at: nil,
+          place_order: place_order,
+          add_to_cart: add_to_cart,
+          order_delivered: false,
         )
         id = new_order.id
         item_ids.each { |menu_item_id|
@@ -15,7 +19,9 @@ class Order < ActiveRecord::Base
         }
     end
     def self.pending
-        where(delivered_at: nil)
+      where(order_delivered: false)
     end
-   
+    def self.cart_items
+      where(add_to_cart: true)
+    end
 end

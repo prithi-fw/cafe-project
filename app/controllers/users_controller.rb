@@ -10,6 +10,8 @@ class UsersController < ApplicationController
       last_name: params[:last_name],
       email: params[:email],
       password: params[:password],
+      role: "customer",
+
      )
      redirect_to "/"
   end

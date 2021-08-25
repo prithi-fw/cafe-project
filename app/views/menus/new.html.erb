@@ -1,0 +1,5 @@
+<%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
+    <%=text_field_tag 'menu_name',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
+    <%=submit_tag 'Add',class:'AddMenu-button'%>
+<%end%>
+ 
