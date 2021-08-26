@@ -1,3 +1,8 @@
+.User-login {
+    background-color: #e1f5fe;
+    height: 100%;
+}
+
 .NewUsers-title {
     margin-bottom: 40px;
     font-size: 30px;
@@ -23,4 +28,15 @@
     background-color: #6bcf52;
     border: 0;
     border-radius: 8px;
+}
+
+.login-card {
+    width: fit-content;
+    padding: 30px;
+    position: relative;
+    top: 20%;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 5px;
 }
