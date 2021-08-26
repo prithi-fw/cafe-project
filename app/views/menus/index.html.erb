@@ -1,15 +1,18 @@
- <article>
-  <p style="font-size:xx-large;text-align:center">Menus</p>
+<% color=Array['#4dd0e1','#ffd54f','#e0e0e0','#9575cd'] %>
+<% counter=0 %>
+<article>
+ <p style="font-size:xx-large;text-align:center;margin-bottom:20px; color: white">Today's Menus</p>
+ <div class="Menu-grid">
 
-  <section class="Menu">
     <%@menus.each do |menu|%>
       <li>
         <%=link_to menu_path(menu.id),class: "Menu-link" do%>
           <label class="Menu-container">
-            <p class="Menu-text"><%= menu.menu_name %></p>
+            <p class="Menu-text" style="background-color:<%= color[counter] %>"><%= menu.menu_name %></p>
           </label>
         <%end%>
+        <% counter = counter + 1 %>
       </li>
     <%end%>
-  </section>
+  </div>
 </article>
