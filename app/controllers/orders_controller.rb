@@ -1,18 +1,15 @@
 class OrdersController < ApplicationController
     def index
-        @orders = Order.pending
+        @orders = Order.placed_orders(session[:current_user_id])
+
         render "index"
     end
     def create 
-        item_ids = params[:item_ids]
-        clean_item_ids = item_ids - [nil]
-        place_order = placing_an_order?
-        add_to_cart = adding_to_cart?
-        place_order = placing_an_order?
-        add_to_cart = adding_to_cart?
-        Order.create_order_and_order_items(current_user.id, clean_item_ids, place_order, add_to_cart)
-     
-        redirect_to menus_path
+      order = Order.find(session[:current_order_id])
+      order.update!(total_price: params[:total_price].to_f,
+                    place_order: true, order_delivered: false)
+      session[:current_order_id] = Order.new_order(session[:current_user_id])
+      redirect_to orders_path
     end
     def update
         id = params[:id]
@@ -43,6 +40,6 @@ class OrdersController < ApplicationController
             flash[:error] = order_item.errors.full_messages.join(",")
           end
     end
-        redirect_to menu_path(params[:menu_id])
+        redirect_to menus_path
     end
 end

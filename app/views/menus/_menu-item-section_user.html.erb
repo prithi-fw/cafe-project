@@ -20,11 +20,18 @@
    </section>
    <section>
      <h1>Your Food Cart!</h1>
-     <%= Order.find(session[:current_order_id]).order_items.each do |item| %>
-       <p> <% item.menu_item_name %> </p>
-       <p> <% item.menu_item_price %> </p>
-       <p> <% item.quantity %>
-       <p> <% item.price %> </p>
+     <% order_items=Order.find(session[:current_order_id]).order_items %>
+     <% total_price=0 %>
+     <% order_items.each do |item| %>
+       <p> <%= item.menu_item_name %> </p>
+       <p> <%= item.menu_item_price %> </p>
+       <p> <%= item.quantity %> </p>
+       <p> <%= item.price %> </p>
+       <% total_price+=item.price %>
+     <% end %>
+     <%= form_with url:orders_path, method: "post" do |form|%>
+       <% hidden_field_tag :total_price, total_price %>
+       <%= form.submit  "Buy Now", class:"Table-button" %>
      <% end %>
    </section>
  </article>

@@ -13,8 +13,8 @@ class MenusController < ApplicationController
   end
   def create
     id = params[:menu_id]
-    item_name = params[:menu_item]
-    new_menu = Menu.new(id: id, menu_name: name, active: false)
+    item_name = params[:menu_name]
+    new_menu = Menu.new(id: id, menu_name: item_name, active: false)
      if new_menu.save
        redirect_to new_menu_path
      else

@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         session[:current_user_id] = user.id
-        order = Order.create!(user_id: session[:current_user_id])
-        session[:current_order_id] = order.id
+        session[:current_order_id] = Order.new_order(user.id)
 
         redirect_to "/"
       else
