@@ -27,7 +27,7 @@
        <p> <%= item.menu_item_price %> </p>
        <p> <%= item.quantity %> </p>
        <p> <%= item.price %> </p>
-       <% total_price+=item.price %>
+       <% total_price += item.price %>
      <% end %>
      <%= form_with url:orders_path, method: "post" do |form|%>
        <% hidden_field_tag :total_price, total_price %>

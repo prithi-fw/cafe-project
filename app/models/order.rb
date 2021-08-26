@@ -17,4 +17,9 @@ class Order < ActiveRecord::Base
     def self.placed_orders(user_id)
       orders = User.find(user_id).orders.where(place_order: true)
     end
+    def self.pending_orders?
+      orders = Order.where(order_delivered: false)
+    end
+  
+ 
 end

@@ -1,0 +1,19 @@
+<article>
+   <section>
+     <% @orders.all.each do |order| %>
+       <%= form_with url: order_path(order.id), method:"put" do  |form| %>
+       <li class="Orders">
+         <label class="Orders-container">
+           <% order.order_items.each do |order_item| %>
+             <p><%= order_item.menu_item_name%></p>
+             <p><%= order_item.menu_item_price%></p>
+             <p><%= order_item.quantity %></p>
+             <p><%= order_item.price %></p>
+           <% end %>
+         </label>
+       </li>
+       <%= form.submit "Mark as Delivered", class:"Table-button" %>
+       <% end %>
+     <% end %>
+   </section>
+ </article>
