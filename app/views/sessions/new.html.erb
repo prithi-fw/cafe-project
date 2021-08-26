@@ -1,14 +1,14 @@
 <section class="User-login">
  <div class="login-card">
-   <p class="NewUsers-title">Welcome to Cafeteria!</p>
+   <p class="NewUsers-title">Welcome to HP Cafe !</p>
    <section class="UsersNew">
      <%= form_with url: sessions_path do |form| %>
        <div class="Form-section">
-         <p class="FormInput-label">email:</p>
+         <p class="FormInput-label">Email</p>
          <%= form.email_field :email, class: "Form-input" %>
        </div>
        <div class="Form-section">
-         <p class="FormInput-label">password:</p>
+         <p class="FormInput-label">Password</p>
          <%= form.password_field :password, class: "Form-input" %>
        </div>
        <div class="Form-section">
