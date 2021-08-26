@@ -1,21 +1,22 @@
 <p class="NewUsers-title">Welcome new user!</p>
-
+<section class="User-login">
+ <div class="login-card">
  <section class="UsersNew">
    <%= form_with url: users_path do |form| %>
      <div class="Form-section">
-       <p class="FormInput-label">First name:</p>
+       <p style: "color:white">First name</p>
        <%= form.text_field :first_name, class: "Form-input" %>
      </div>
      <div class="Form-section">
-       <p class="FormInput-label">Last name:</p>
+       <p class="FormInput1-label">Last name</p>
        <%= form.text_field :last_name, class: "Form-input" %>
      </div>
      <div class="Form-section">
-       <p class="FormInput-label">Email :</p>
+       <p class="FormInput1-label">Email </p>
        <%= form.email_field :email, class: "Form-input" %>
      </div>
      <div class="Form-section">
-       <p class="FormInput-label"> Password:</p>
+       <p class="FormInput1-label"> Password</p>
        <%= form.password_field :password, class: "Form-input" %>
      </div>
      <div class="Form-section">
@@ -23,3 +24,9 @@
      </div>
    <%end%>
  </section>
+ <div class="login-card-img">
+     <h1>Have an Account?</h1>
+     <p style="text-align:center;margin-top:5%;">LogIn and discover the delicious food!</p>
+     <p style="text-align: center; margin-top:70%"> <%= link_to "LOGIN", new_sessions_path , class:"Sign-up-button" %> </p>
+   </div>
+ </div>
