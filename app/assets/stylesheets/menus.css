@@ -16,8 +16,6 @@
     box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.2);
 }
 
-.Menu-container {}
-
 .Menu-link {
     text-decoration: none;
 }
@@ -38,12 +36,6 @@
     border-radius: 4px;
 }
 
-.AddMenu-name {
-    padding: 6px;
-    margin-right: 10px;
-    margin-left: 20px;
-}
-
 .Menu-grid {
     width: 100%;
     display: grid;
@@ -52,4 +44,57 @@
     font-size: 25px;
     grid-gap: 5%;
     padding: 50px;
+}
+
+.AddMenu {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.AddMenu-name {
+    margin-right: 10px;
+    padding: 0 20px;
+}
+
+.EditMenu {
+    display: flex;
+    background-color: white;
+    justify-content: space-around;
+    width: 60%;
+    margin: auto;
+    padding: 10px 0;
+}
+
+.EditMenu-name {
+    font-size: x-large;
+    color: black;
+    margin-right: 20px;
+}
+
+.EditMenu-img {
+    color: red;
+}
+
+.Menu-active {
+    background-color: green;
+    border: 1px solid green;
+    padding-bottom: 0;
+    color: white;
+    font-size: small;
+    text-align: center;
+}
+
+.Menu-Inactive {
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    font-size: small;
+    text-align: center;
+}
+
+.plus-img,
+.edit {
+    width: 20px;
+    height: 20px;
 }

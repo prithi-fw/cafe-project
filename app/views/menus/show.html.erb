@@ -1,21 +1,60 @@
-<% if @current_user.role == 'owner' %>
-<article>
-  <%=form_with(url: menu_items_path,method: 'post', class: "AddMenuItem") do%>
-    <%=hidden_field_tag 'menu_id',params[:id]%>
-    <%=text_field_tag 'menu_item_name',nil,placeholder:'Name of the Menu-Item',class:"AddMenuItem-name"%>
-    <%=text_field_tag 'menu_item_price',nil,placeholder:'Price',class:"AddMenuItem-price"%>
-    
-      <%=submit_tag 'Add',class:'AddMenuItem-button'%>
-   <%end%>
+<% menu = Menu.find(params[:id]).menu_items %>
+ <% menu_id = params[:id] %>
+ <article class="Wrapper">
+     <h1><%= flash[:error] %></h1>
+     <section class="Wrapper-grid">
+       <section class="MenuItem">
+           <% menu.each do |item| %>
+             <li>
+               <div class="MenuItem-container">
+               <%= form_with url: cart_path, method: "post" do |form| %>
+
+                   <%= hidden_field_tag :item_name, item.menu_item_name %>
+                   <%= hidden_field_tag :item_price,item.menu_item_price %>
+                   <%= hidden_field_tag :menu_item_id,item.id %>
+                   <%= hidden_field_tag :menu_id, menu_id %>
+                   <p class="MenuItem-name"><%= item.menu_item_name %></p>
+                   <div class="LeftRight">
+                   <p class="MenuItem-price"> &#x20b9; <%=item.menu_item_price%> </p>
+                   <input type="number" name="quantity" id="quantity" value="1" min="1" max="8">
+                   </div>
+                 <div class="wrapper">
+                   <%= form.submit  "Add to Cart", class:"Table-button"%>
+                 </div>
+               <% end %>
+                 </div>
+             </li>
+           <% end %>
+       </section>
+       <section class="Food-cart">
+         <h1>Your Food Cart!</h1>
+         <% order_items=Order.find(session[:current_order_id]).order_items %>
+         <div class="Item-info">
+         <% if order_items.length !=0 %>
+             <p>S.No</p>
+             <p>Item</p>
+             <p>Price</p>
+             <p>Quantity</p>
+             <p>Total Price</p>
+         <% end %>
+         <% total_price=0 %>
+         <% item_count=1 %>
+           <% order_items.each do |item| %>
+               <p> <%= item_count %> </p>
+               <p> <%= item.menu_item_name %> </p>
+               <p> <%= item.menu_item_price %> </p>
+               <p> <%= item.quantity %> </p>
+               <p> <%= item.price %> </p>
+             <% item_count = item_count + 1 %>
+             <% total_price+=item.price %>
+           <% end %>
+              </div>
+         <%= form_with url:orders_path, method: "post" do |form|%>
+           <% hidden_field_tag :total_price, total_price %>
+           <%= form.submit  "Buy Now", class:"Table-button" %>
+         <% end %>
+
+       </section>
+     </section>
    </article>
-   <%=render partial: "menu-item-section_owner", locals:{
-    menu: Menu.find(params[:id]).menu_items,
-    menu_id: params[:id]
- 
- }%>
- <% else %>
-   <%= render partial: "menu-item-section_user", locals:{
-    menu: Menu.find(params[:id]).menu_items,
-    menu_id: params[:id]
-    } %>
- <% end %>
+   

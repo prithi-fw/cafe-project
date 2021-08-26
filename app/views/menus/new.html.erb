@@ -1,28 +1,44 @@
 <article>
-   <div style="margin-bottom:20px;">
+   <div>
      <%=form_with(url:'/menus',method: 'post', class: "AddMenu") do%>
        <%=text_field_tag 'menu_name',nil,placeholder:'Name of the Menu?',class:"AddMenu-name"%>
        <%=submit_tag 'Add',class:'AddMenu-button'%>
      <%end%>
    </div>
    <div class="Menus">
-     
-       <%Menu.all.each do |menu|%>
-         <li>
-               <%=link_to menu_path(menu.id),class: "Menu-link" do%>
-                 <label class="Menu-container">
-
-                   <p class="Menu-text"><%= menu.menu_name %></p>
-                   <%=image_tag 'right-arrow.png' %>
-                 </label>
-               <%end%>
-               
+    <%Menu.all.each do |menu|%>
+     <li>
+      <% if session[:edit_menu_id].eql? menu.id %>
+        <div class="EditMenu">
+        <%= form_with url:edit_menu_details_path, method: 'put' do %>
+          <%= hidden_field_tag :menu_id, menu.id %>
+          <%=text_field_tag 'menu_name',menu.menu_name,placeholder:'Change the Menu Name',class:"AddMenu-name"%>
+          <%= submit_tag "change name" %>
+        <% end %>
+        </div>
+      <% else %>
+          <div class="EditMenu">
+            <%= link_to menu_path(menu.id), method:"put" do %>
+              <%= check_box_tag 'active', '1', checked = menu.active, class: 'Menu-checkbox', onclick: 'this.form.submit()' %>
+            <% end %>
+            <p class="EditMenu-name"><%= menu.menu_name %></p>
+            <%= form_with( url:edit_menu_path(menu.id), method:"get", local:true) do %>
+              <%= image_submit_tag 'edit.png', class:'edit'%>
+            <% end %>
+            <% if menu.active %>
+              <p class="Menu-active">Active</p>
+            <% else %>
+              <p class="Menu-Inactive">InActive</p>
+            <% end %>
+            <%= form_with( url:menu_item_path(menu.id), method:"get", local:true) do %>
+              <%= image_submit_tag 'plus.png', class: 'plus-img'%>
+            <% end %>     
                <%=link_to menu_path(menu.id), method:"delete",class:"Menu-form"   do%>
-                 <%=image_submit_tag 'trashcan1.svg'%>
+                <%= image_submit_tag 'trashcan1.svg', class: "EditMenu-img" %>
                <%end%>
-           
-         </li>
-
+            </div>
+           <% end %>
+        </li>
        <%end%>
     </div>
  </article>

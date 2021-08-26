@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  put "menus/edit_menu_details" => "menus#edit_menu_details", as: :edit_menu_details
+  put "menu_item/edit_menu_items_details" => "menu_items#edit_menu_item_details", as: :edit_menu_item_details
+     
   get "/" => "home#index"
   resources :menu_items
   resources :menus

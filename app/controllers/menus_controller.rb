@@ -29,20 +29,29 @@ class MenusController < ApplicationController
     redirect_to new_menu_path
   end
   def edit
-    @id = params[:id]
-    render "edit"
+    id = params[:id]
+    session[:edit_menu_id] = id
+    redirect_to new_menu_path
   end
   def update
     id = params[:id]
     menu = Menu.find(id)
-    menu.active = params[:active]
-    p params[:active]
+    menu.active = !menu.active
     menu.save!
-    redirect_to active_menus_path
+    redirect_to new_menu_path
   end
 
   def active_menus
     render "active"
+  end
+  def edit_menu_details
+    id = params[:menu_id]
+    new_name = params[:menu_name]
+    menu = Menu.find(id)
+    menu.menu_name = new_name
+    menu.save!
+    session[:edit_menu_id] = -1
+    redirect_to new_menu_path
   end
 end
 

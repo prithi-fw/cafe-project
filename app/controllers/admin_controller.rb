@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
     def index
-      render "admin"
+      redirect_to new_menu_path
     end
 end

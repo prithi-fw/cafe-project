@@ -3,6 +3,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     align-items: center;
+    color: white;
 }
 
 .Order-user-name,
@@ -10,4 +11,5 @@
 .Order-id {
     padding-left: 4px;
     padding-right: 4px;
+    color: white;
 }
