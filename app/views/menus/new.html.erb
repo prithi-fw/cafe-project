@@ -6,15 +6,9 @@
      <%end%>
    </div>
    <div class="Menus">
-     <table>
-       <tr class="Table-header">
-         <th>Menu</th>
-         <th>Delete</th>
-       </tr>
+     
        <%Menu.all.each do |menu|%>
          <li>
-           <tr>
-              <td style="display:flex;">
                <%=link_to menu_path(menu.id),class: "Menu-link" do%>
                  <label class="Menu-container">
 
@@ -22,17 +16,14 @@
                    <%=image_tag 'right-arrow.png' %>
                  </label>
                <%end%>
-               </td>
-             <td>
+               
                <%=link_to menu_path(menu.id), method:"delete",class:"Menu-form"   do%>
                  <%=image_submit_tag 'trashcan1.svg'%>
                <%end%>
-            </td>
-           </tr>
+           
          </li>
 
        <%end%>
-     </table>
     </div>
  </article>
  

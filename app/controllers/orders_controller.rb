@@ -22,26 +22,27 @@ class OrdersController < ApplicationController
         order.save!
         redirect_to orders_path
     end
-    def placing_an_order?
-        params[:commit] == "Place Order"
+    def cart
+        order_item = OrderItem.exist?(session[:current_user_id], session[:current_order_id], params[:menu_item_id])
+        if order_item
+          updated_quantity = order_item.quantity + params[:quantity].to_i
+          order_item.update!(quantity: updated_quantity,
+                             price: updated_quantity * params[:item_price].to_f)
+        else
+          order_item = OrderItem.new(
+            order_id: session[:current_order_id],
+            menu_item_id: params[:menu_item_id],
+            menu_item_name: params[:item_name],
+            menu_item_price: params[:item_price],
+            quantity: params[:quantity],
+            price: params[:quantity].to_f * params[:item_price].to_f,
+          )
+          if (order_item.save)
+            # nothing
+          else
+            flash[:error] = order_item.errors.full_messages.join(",")
+          end
     end
-   
-    def adding_to_cart?
-        params[:commit] == "Add to Cart"
-    end
-   
-    def show_cart
-        @orders = Order.cart_items
-        @orders = Order.cart_items(current_user.orders)
-        render "cart"
-    end
-    def cart_to_order
-        order_ids = params[:order_ids]
-        clean_order_ids = order_ids - [nil]
-        if clean_order_ids.length() != 0
-          Order.cart_order(clean_order_ids)
-          @orders = Order.cart_items(current_user.orders)
-        end
-        redirect_to show_cart_path
+        redirect_to menu_path(params[:menu_id])
     end
 end

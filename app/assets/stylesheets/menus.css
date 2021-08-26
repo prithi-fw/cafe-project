@@ -6,12 +6,13 @@
 .Menu-text {
     font-size: x-large;
     line-height: 1.4;
-    padding-left: 5px;
     color: black;
+    text-align: center;
 }
 
 .Menu-container {
-    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .Menu-link {
@@ -28,22 +29,6 @@
     background: #ffffff;
     border: 1px solid #bfb8cc;
     border-radius: 4px;
-}
-
-.Menu-img {
-    width: auto;
-    height: auto;
-    visibility: hidden;
-}
-
-.Menu-container p:hover {
-    font-size: xx-large;
-    visibility: visible;
-}
-
-.Header {
-    font-size: xx-large;
-    margin-bottom: 10px;
 }
 
 .AddMenu-name {

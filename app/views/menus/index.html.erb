@@ -1,4 +1,5 @@
  <article>
+  <p style="font-size:xx-large;text-align:center">Menus</p>
 
   <section class="Menu">
     <%@menus.each do |menu|%>
@@ -6,7 +7,6 @@
         <%=link_to menu_path(menu.id),class: "Menu-link" do%>
           <label class="Menu-container">
             <p class="Menu-text"><%= menu.menu_name %></p>
-            <%=image_tag 'right-arrow.png' %>
           </label>
         <%end%>
       </li>
